@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd"
+>
+<!--    <bean id="other" class="cn.ronghuanet._03di.OtherBean">-->
+<!--        <property name="name" value="xx"/>-->
+<!--        <property name="age" value="20"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; 复杂属性的注入 &ndash;&gt;-->
+<!--   <bean id="user" class="cn.ronghuanet._03di.User">-->
+<!--       &lt;!&ndash; 先注入简单的 &ndash;&gt;-->
+<!--       <property name="id" value="1"/>-->
+<!--       <property name="name" value="www"/>-->
+<!--       <property name="sex" value="true"/>-->
+<!--       <property name="salary" value="10000"/>-->
+
+<!--       &lt;!&ndash;注入 集合 list set  注入数组-->
+<!--        private List<OtherBean> otherBeanList;-->
+<!--        private Set<String> set;-->
+<!--        private Set<OtherBean> otherBeanSet;-->
+<!--        private String[] arrays;-->
+<!--       &ndash;&gt;-->
+<!--       <property name="otherBeanList">-->
+<!--           <list>-->
+<!--               <bean class="cn.ronghuanet._03di.OtherBean"/>-->
+<!--               <bean class="cn.ronghuanet._03di.OtherBean"/>-->
+<!--           </list>-->
+<!--       </property>-->
+<!--       <property name="set">-->
+<!--           <set>-->
+<!--               <value>set1</value>-->
+<!--               <value>set2</value>-->
+<!--               <value>set3</value>-->
+<!--               <value>set3</value>-->
+<!--           </set>-->
+<!--       </property>-->
+<!--       <property name="otherBeanSet">-->
+<!--           <set>-->
+<!--               <bean class="cn.ronghuanet._03di.OtherBean"/>-->
+<!--               <bean class="cn.ronghuanet._03di.OtherBean"/>-->
+<!--               <ref bean="other"/> &lt;!&ndash; 引用外面定义的bean &ndash;&gt;-->
+<!--               <ref bean="other"/>-->
+<!--           </set>-->
+<!--       </property>-->
+<!--       <property name="arrays">-->
+<!--           <array>-->
+<!--               <value>aa</value>-->
+<!--               <value>bb</value>-->
+<!--               <value>cc</value>-->
+<!--           </array>-->
+<!--       </property>-->
+<!--       <property name="list">-->
+<!--           <list>-->
+<!--               <value>list1</value>-->
+<!--               <value>list2</value>-->
+<!--               <value>list3</value>-->
+<!--           </list>-->
+<!--       </property>-->
+<!--       &lt;!&ndash;-->
+<!--        private Properties props1;-->
+<!--        private Properties props2;-->
+<!--        private Map<String,String> maps;-->
+<!--       &ndash;&gt;-->
+<!--       <property name="props1">-->
+<!--           <props>-->
+<!--               <prop key="key1">value1</prop>-->
+<!--               <prop key="key2">value2</prop>-->
+<!--           </props>-->
+<!--       </property>-->
+<!--       &lt;!&ndash;这种写法 不支持中文&ndash;&gt;-->
+<!--       <property name="props2">-->
+<!--         <value>-->
+<!--             jdbc.url=jdbc:mysql:///mybatis-->
+<!--             jdbc.name=root-->
+<!--             jdbc.password=123456-->
+<!--         </value>-->
+<!--       </property>-->
+<!--       <property name="maps">-->
+<!--           <map>-->
+<!--               <entry key="name" value="zs"/>-->
+<!--               <entry key="age" value="20"/>-->
+<!--               <entry key="gender" value="男"/>-->
+<!--           </map>-->
+<!--       </property>-->
+<!--   </bean>-->
+<!--    <bean id="userService" class="cn.ronghuanet._05aop._01xml.UserServiceImpl"/>-->
+<!--    <bean id="txManager" class="cn.ronghuanet._05aop._01xml.TxManager"/>-->
+
+    <!--xml配置aop-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;切入点&ndash;&gt;-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* cn.ronghuanet._05aop._01xml.I*Service.*(..))"/>-->
+<!--        &lt;!&ndash;切面&ndash;&gt;-->
+<!--        <aop:aspect ref="txManager">-->
+<!--&lt;!&ndash;            &lt;!&ndash;前置通知&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:before method="begin" pointcut-ref="pointcut"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;后置通知，方法执行后通知&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:after-returning method="commit" pointcut-ref="pointcut"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;异常通知&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:after-throwing method="rollback" pointcut-ref="pointcut"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash;最终通知&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:after method="close" pointcut-ref="pointcut"/>&ndash;&gt;-->
+<!--            <aop:around method="around" pointcut-ref="pointcut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+    <!--注解配置aop-->
+    <!--开启注解扫描-->
+    <context:component-scan base-package="cn.ronghuanet._05aop._02anno"/>
+    <!--开启springAop注解-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd"
+>
+    <!-- 注解 管理bean -->
+    <!--<context:component-scan base-package="cn.ronghuanet._02beancreatemethod"/>-->
+
+    <!-- xml管理bean -->
+  <!--   <bean id="car" class="cn.ronghuanet._02beancreatemethod.Car"/>-->
+
+    <!--使用静态工厂的方式获取bean-->
+ <!--   <bean id="car" class="cn.ronghuanet._02beancreatemethod.CarFactory" factory-method="createCar"/>-->
+
+    <!--使用实例工厂-->
+    <!--<bean id="phoneFactory" class="cn.ronghuanet._02beancreatemethod.PhoneFactory"/>
+    <bean id="phone" factory-bean="phoneFactory" factory-method="createPhone"/>-->
+
+    <!-- 使用 FactoryBean的方式创建对象-->
+    <bean id="food" class="cn.ronghuanet._02beancreatemethod.FoodFactory">
+
+    </bean>
+</beans>
